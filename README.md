@@ -482,19 +482,25 @@ Before we go, here are two final images: An individual decision tree from our to
 
 # Conclusion & Recommendations:
 
+## Before we get into the discussion of feature recommendations, which model should we recommend for classification? 
 - A manually tuned Decision Tree from the original dataset gave us the best results in terms of F1
   - Pros for a single decision tree:
     - Less computationally complex than a random forest
     - This model, in particular, is tuned to what seems to be maximum performance given the dataset.
       - F1 at 0.51 means that there is moderate harmony between the precision and the recall. This means that a moderate amount of results are returned with a moderate amount of those results labeled correctly.
-- Since we are pitching our model to bankers & loan officers, however, it seems that leaning towards a higher recall and a lower precision will be appropriate.
+- Since we are pitching our model to bankers & loan officers, it seems that leaning towards a **higher recall and a lower precision will be appropriate**.
   - In this case, our best model would be the logistic regression model.
     - This model's high recall and low precision means that there our model will predict more people will default on their loans than exist in reality. The lower precision means our model may not be very accurate per person however, in the long run, more false positives could save a bank/lender money than more false negatives.
+    - **It is worth noting, however, the relatively low AUC of 0.656 means that this model will have a fairly difficult time telling the difference between classes in general.** 
 - After speaking with a banker friend, he said that in the interest of ethics as well as with advancements in tech, high precision can be very valuable as well.
   - While a higher recall can save the bank money, it can also turn away valuable business partners and, with a high enough recall and a low enough precision, your bank can gain a reputation for not having a solid predictive model and you will lose business.
     - I used to experience this myself when my bank would too often categorize charges I would make abroad as fraudulent even though I told my bank exactly where I would be.
-  - In the case that a bank would want a model with a higher precision, I would recommend using The grid-searched decision tree or random forest
-Both models perform similarly however it will depend on how much computational complexity one could handle.
-    - If one is looking for a more complex and robust model, GridSearch Random Forest is the way to go.
+  - In the case that a bank could potentially desire a model with a higher precision.
+  - What's more, **considering this to be a class imbalanced dataset** it is important to consider the AUC and to, potentially, even make this score a priority alongside our recall. 
+    - In that case, my **highest recommendation** would go to the ***random forest grid-searched model fit with data from our Top Ten Dataframe***
+    - If computational complexity was a concern, the bank could downgrade to the also-great Decision Tree Grid-Searched Model trained on our Top Ten DataFrame. 
+
 - Finally, regarding features to focus on:
   - **The payment status within the last 2-3 months seems, by far, to be the most likely to predict whether or not one will default on their credit payment next month**.
+
+Thank you for taking the time to read this! I hope it has been enlightening. 
