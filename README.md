@@ -22,11 +22,11 @@ The following Python packages were used in the analysis of my data:
 - Warnings
 - Datetime
 
-# Who are the stakeholders?
+# Who are the Stakeholders?
 
 Banks that are interested in risk prevention when giving out credit to customers.
 
-# What are we here for?
+# What are We Here For?
 
 The two primary questions that guided my research: 
 
@@ -180,11 +180,11 @@ Column names were changed to reflect the months to which they were relevant.
 
 At the start, I predicted that credit limit, education, and month_status will be of most importance. 
 
-## Are false positives or false negatives more of a concern?
+## Are False Positives or False Negatives More of a Concern?
 
 It depends on the bank's goals. Since 1 denotes someone who will default and 0 denotes someone who will pay, I will define "false positive" as the model denoting someone as defaulting when, in fact, they would make their next payment. A "false negative" then would be someone who is denoted as one who would make their next payment when, in reality, they will default. False negatives could lead to loss for the bank and false positives can lead to annoyed customers. While of course, in an ideal world, our model will predict perfectly, bankers would be happy with a model that is more likely to give false positives than false negatives in this case. 
 
-# Given the data that we have, what is the basic probability that someone will default on their payment? 
+# Given the Data that We Have, What is the Basic Probability That Someone Will Default on Their Payment? 
 
 ## Answer
 - Head to the column 'default payment next month', sum up the 1s, divide by the length. 
@@ -193,7 +193,7 @@ It depends on the bank's goals. Since 1 denotes someone who will default and 0 d
 
 ![Percent Default](/readme_images/percent_default.jpg)
 
-# Some further preprocessing
+# Some Further Preprocessing
 
 Before I could create classification models to address the question of feature importance, I needed some additional preprocessing. 
 
@@ -217,7 +217,7 @@ and more!
 
 **The Final Number of Columns was 39 including the target variable.**
 
-# Time for some models
+# Time for Some Models
 
 I have chosen some of the highest performing models to break down and explain. The models are as follows:
 
@@ -227,13 +227,13 @@ I have chosen some of the highest performing models to break down and explain. T
 1. An untuned Random Forest (On the original dataset)
 1. A Grid-Searched Random Forest (On the original dataset and the Top Ten)
 
-## Splitting the data 
+## Splitting the Data 
 
 Before we fit the data to any models we must split it into training and testing sets. We begin by separating the target variable from the predictors and then using a function called *train_test_split* to split our predictors and our target into training and testing sets. The ratio was 80% training to 20% testing. I also placed this split (and all models) into the random_state of 42. Setting the splits and the modeling into random_state means that when the data is arranged "randomly" it is randomly mixed in the same way each time the code is run. **This helps with reproducability which is essential in any science.**
 
 ![Split Data](/readme_images/split_the_data.jpg)
 
-## The first model I try is a logistic regression model
+## The First Model: Logistic Regression
 
 Logistic Regression uses a sigmoid function to plot an "s-like" curve that enables a linear function to act as a binary classifier. **We won't be looking at the s curve here, though. We will be focusing on the results of a *confusion matrix.***
 
@@ -290,7 +290,7 @@ For our above regression, I adjusted the *classification threshold* to see if th
 
 As we can see here, the classification threshold change gave us good results. Our model is now predicting some credit default (1) values. The classification report is below. 
 
-![Log Reg 2 Classification Report](/readme_images/log_reg_2_class_rep.jpg)
+![Log Reg 2 Classification Report](/readme_images/log_reg_two_class_rep.jpg)
 
 While the F1 score of 0.41 is not the highest of the models you will see here, the **recall score *is* the highest at *0.62.*** The precision is also the lowest of the models at 0.3. *A lower AUC of 0.656 also appears below.* 
 
