@@ -231,7 +231,7 @@ I have chosen some of the highest performing models to break down and explain. T
 
 Before we fit the data to any models we must split it into training and testing sets. We begin by separating the target variable from the predictors and then using a function called *train_test_split* to split our predictors and our target into training and testing sets. The ratio was 80% training to 20% testing. I also placed this split (and all models) into the random_state of 42. Setting the splits and the modeling into random_state means that when the data is arranged "randomly" it is randomly mixed in the same way each time the code is run. **This helps with reproducability which is essential in any science.**
 
-![Split Data](/readme_images/split_the_data.jpg)
+![Split the Data](/readme_images/split_the_data.jpg)
 
 ## The First Model: Logistic Regression
 
